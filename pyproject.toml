@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tska"
+dynamic = ["version"]
+description = 'Typescript utilities'
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "akx", email = "akx@iki.fi" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "mypy",
+  "pytest",
+  "pytest-cov",
+]
+
+[project.urls]
+Documentation = "https://github.com/akx/tska#readme"
+Issues = "https://github.com/akx/tska/issues"
+Source = "https://github.com/akx/tska"
+
+[tool.hatch.version]
+path = "src/tska/__about__.py"
+
+[tool.coverage.run]
+source_pkgs = ["tska", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/tska/__about__.py",
+]
+
+[tool.coverage.paths]
+tska = ["src/tska", "*/tska/src/tska"]
+tests = ["tests", "*/tska/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
